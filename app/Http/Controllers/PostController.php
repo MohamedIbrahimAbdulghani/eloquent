@@ -35,11 +35,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->save();
+        /*
+
+        ///  this is first way to insert data inside database
+
+            $post = new Post();
+            $post->title = $request->title;
+            $post->body = $request->body;
+            if($post->save()):
+                return view("posts/create");
+            endif;
+
+        */
+
+
+        /// this is second way to insert data in database
+
+        Post::create([
+            // لازم اعرفهم داخل الموديل create علشان استخدم ال
+            "title"=>$request->title,
+            "body"=>$request->body
+        ]);
         return view("posts/create");
+
     }
 
     /**
