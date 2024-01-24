@@ -93,8 +93,8 @@ class PostController extends Controller
         // $post->body = $request->body;
         // $post->save();
 
-        $post = Post::findOrFail($id);
-        $post->update([
+
+        Post::findOrFail($id)->update([
             "title"=>$request->title,
             "body"=>$request->body
         ]);
@@ -107,8 +107,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+        return redirect()->route("posts.index");
     }
 }
