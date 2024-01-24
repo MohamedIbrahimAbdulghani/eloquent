@@ -14,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view("posts/index");
+        $posts = Post::all();
+        // $posts = Post::get();
+        return view("posts/index", compact("posts"));
     }
 
     /**
@@ -36,28 +38,22 @@ class PostController extends Controller
     public function store(Request $request)
     {
         /*
-
         ///  this is first way to insert data inside database
-
             $post = new Post();
             $post->title = $request->title;
             $post->body = $request->body;
             if($post->save()):
                 return view("posts/create");
             endif;
-
         */
 
-
         /// this is second way to insert data in database
-
         Post::create([
             // لازم اعرفهم داخل الموديل create علشان استخدم ال
             "title"=>$request->title,
             "body"=>$request->body
         ]);
         return view("posts/create");
-
     }
 
     /**
@@ -79,7 +75,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+
     }
 
     /**
