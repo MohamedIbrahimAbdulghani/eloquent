@@ -40,7 +40,7 @@
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->body }}</td>
                 <td>
-                    <a href="" class="btn btn-secondary">Edit</a>
+                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-secondary">Edit</a>
                     <a href="" class="btn btn-danger">Delete</a>
                 </td>
                 </tr>

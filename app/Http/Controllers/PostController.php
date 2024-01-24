@@ -73,9 +73,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-
+        $post = Post::findOrFail($id);
+        return view("posts/edit", compact("post"));
     }
 
     /**
@@ -85,9 +86,19 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        // $post = Post::findOrFail($id);
+        // $post->title = $request->title;
+        // $post->body = $request->body;
+        // $post->save();
+
+        $post = Post::findOrFail($id);
+        $post->update([
+            "title"=>$request->title,
+            "body"=>$request->body
+        ]);
+        return redirect()->route("posts.index");
     }
 
     /**
