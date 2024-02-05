@@ -18,6 +18,10 @@
             display: block;
             margin-top: 10px;
         }
+        form {
+            width: 75%;
+            margin: auto;
+        }
     </style>
 </head>
 <body>

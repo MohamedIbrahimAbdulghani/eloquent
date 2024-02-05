@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        // $posts = Post::get();
+        // $post = Post::get();
         return view("posts/index", compact("posts"));
     }
 
@@ -36,7 +36,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {          
         /*
         ///  this is first way to insert data inside database
             $post = new Post();
@@ -49,7 +49,6 @@ class PostController extends Controller
 
         /// this is second way to insert data in database
         Post::create([
-            // لازم اعرفهم داخل الموديل create علشان استخدم ال
             "title"=>$request->title,
             "body"=>$request->body
         ]);
@@ -96,9 +95,10 @@ class PostController extends Controller
 
         Post::findOrFail($id)->update([
             "title"=>$request->title,
-            "body"=>$request->body
+            "body"=>$request->body,
         ]);
         return redirect()->route("posts.index");
+
     }
 
     /**
@@ -109,6 +109,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        // Post::findOrFail($id)->truncate();    // if you want all item from database and return id from 0
         Post::findOrFail($id)->delete();
         return redirect()->route("posts.index");
     }
