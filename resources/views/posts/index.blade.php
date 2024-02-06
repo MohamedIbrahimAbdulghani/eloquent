@@ -20,6 +20,13 @@
             margin-top: 10px;
             margin-bottom: 10px;
         }
+        form {
+            display: inline-block;
+        }
+        a .btn-secondary {
+            display: inline-block;
+        }
+
     </style>
 </head>
 <body>
@@ -41,12 +48,12 @@
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->body }}</td>
                 <td>
-                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-secondary">Edit</a>
+                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-secondary m-auto mb-1">Edit</a>
                     <!-- <a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-danger">Delete</a> -->
                     <form action="{{ route('posts.destroy', $post->id) }}" method="post">
                         @method("DELETE")
                         @csrf
-                        <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                        <button type="submit" class="btn btn-danger  d-block mt-1">Delete</button>
                     </form>
                 </td>
                 </tr>
