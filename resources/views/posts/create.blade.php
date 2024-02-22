@@ -15,8 +15,8 @@
             font-size: 25px;
             font-weight: bold;
             text-align: center;
-            display: block;
-            margin-top: 10px;
+            display: table;
+            margin: auto;
         }
         form {
             width: 75%;
@@ -35,7 +35,7 @@
             <div class="form-group mb-3">
                 <input type="text" class="form-control"  placeholder="Enter Body" name="body">
             </div>
-            <button type="submit" class="btn btn-primary m-auto d-table">Add</button>
+            <button type="submit" class="btn btn-primary m-auto d-table mb-2">Add</button>
         <a href="{{route('posts.index')}}">Show All Posts</a>
         </form>
     </div>
