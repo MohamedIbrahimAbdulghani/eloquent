@@ -114,4 +114,11 @@ class PostController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route("posts.index");
     }
+
+    // this function to restore the deleted data from database
+    public function restore($id)
+    {
+        Post::onlyTrashed()->where("id",$id)->restore();
+        return redirect()->back();
+    }
 }

@@ -48,7 +48,7 @@
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->body }}</td>
                 <td>
-                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-secondary m-auto mb-1">Edit</a>
+                    <a href="{{ route('posts.restore', $post->id) }}" class="btn btn-primary m-auto mb-1">Restore</a>
                     <!-- <a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-danger">Delete</a> -->
                     <form action="{{ route('posts.destroy', $post->id) }}" method="post">
                         @method("DELETE")
