@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text("body");
             $table->softDeletes();
             $table->timestamps();
+            // $table->foreignId("user_id")->constrained("users")->cascadeOnDelete();    //////// this is to make if you make foreign key
         });
     }
 
