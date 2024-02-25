@@ -15,4 +15,9 @@ class Post extends Model
 
     // to use softdelete
     use SoftDeletes;
+
+    // this function made to make scope query
+    public function scopeMyQueryFunction($query) {
+        return $query->where("title", "this is post number 1");
+    }
 }

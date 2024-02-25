@@ -52,7 +52,7 @@ class PostController extends Controller
             "title"=>$request->title,
             "body"=>$request->body
         ]);
-        return view("posts/create");
+        return redirect()->route("posts.index");
     }
 
     /**
@@ -61,8 +61,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
+    public function show() {
         $post = Post::onlyTrashed()->get();
         return view("posts/show_delete", compact("post"));
     }
@@ -116,9 +115,14 @@ class PostController extends Controller
     }
 
     // this function to restore the deleted data from database
-    public function restore($id)
-    {
-        Post::onlyTrashed()->where("id",$id)->restore();
+    public function restore($id) {
+        Post::onlyTrashed()->where("id", $id)->restore();
+        return redirect()->back();
+    }
+
+    // this function to delete data from database forever
+    public function forceDelete($id) {
+        Post::onlyTrashed()->where("id", $id)->forceDelete();
         return redirect()->back();
     }
 }

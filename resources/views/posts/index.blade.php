@@ -32,7 +32,7 @@
 <body>
     <div class="container-fluid">
         <h1 class="text-center">All Posts</h1>
-        <table class="table table-striped">
+        <table class="table table-striped text-center">
             <thead>
                 <tr>
                 <th scope="col">Id</th>
@@ -53,7 +53,7 @@
                     <form action="{{ route('posts.destroy', $post->id) }}" method="post">
                         @method("DELETE")
                         @csrf
-                        <button type="submit" class="btn btn-danger  d-block mt-1">Delete</button>
+                        <button type="submit" class="btn btn-danger  d-block mt-1">Soft Delete</button>
                     </form>
                 </td>
                 </tr>

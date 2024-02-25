@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Show Deleted Posts</title>
+    <title>Show Delete Posts</title>
     <style>
         h1 {
             color: #6c757d;
@@ -26,13 +26,13 @@
         a .btn-secondary {
             display: inline-block;
         }
-
+        
     </style>
 </head>
 <body>
     <div class="container-fluid">
-        <h1 class="text-center">Show Deleted Posts</h1>
-        <table class="table table-striped">
+        <h1 class="text-center">Show Delete Posts</h1>
+        <table class="table table-striped text-center">
             <thead>
                 <tr>
                 <th scope="col">Id</th>
@@ -50,10 +50,9 @@
                 <td>
                     <a href="{{ route('posts.restore', $post->id) }}" class="btn btn-primary m-auto mb-1">Restore</a>
                     <!-- <a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-danger">Delete</a> -->
-                    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
-                        @method("DELETE")
+                    <form action="{{ route('posts.forcedelete', $post->id) }}" method="post">
                         @csrf
-                        <button type="submit" class="btn btn-danger  d-block mt-1">Delete</button>
+                        <button type="submit" class="btn btn-danger  d-block mt-1">Force Delete</button>
                     </form>
                 </td>
                 </tr>
